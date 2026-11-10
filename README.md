@@ -3,7 +3,7 @@
 **Author:** Shruthi Thiyagarajan
 **Course:** Machine Learning Mini-Project
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Shru-Lab/CV7001-ML-Assignment/blob/main/concrete_strength.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Shru-Lab/CV7001-ML-Assignment/blob/main/CV7001_ML_Assignment.ipynb)
 
 ## 1. Problem
 
@@ -63,7 +63,7 @@ Age and cement content are the most influential inputs, followed by water. This 
 
 | File | Description |
 |---|---|
-| `concrete_strength.ipynb` | Full pipeline: data download, split, training, evaluation, figures, saving the model, and an example prediction |
+|`CV7001_ML_Assignment.ipynb` | Full pipeline: data download, split, training, evaluation, figures, saving the model, and an example prediction |
 | `concrete_rf.joblib` | Trained random forest model |
 | `pred_vs_actual.png`, `feature_importance.png` | Figures produced by the notebook |
 | `requirements.txt` | Python packages and versions |
@@ -85,7 +85,7 @@ git clone https://github.com/Shru-Lab/CV7001-ML-Assignment.git
 cd CV7001-ML-Assignment
 pip install -r requirements.txt
 pip install notebook
-jupyter notebook concrete_strength.ipynb
+jupyter notebook CV7001_ML_Assignment.ipynb.
 ```
 
 Then run all cells from top to bottom (**Run → Run All Cells**). An internet connection is needed for the data download.
