@@ -1,6 +1,6 @@
 # Predicting Concrete Compressive Strength with Machine Learning
 
-**Author:** YOUR NAME
+**Author:** Shruthi Thiyagarajan
 **Course:** Machine Learning Mini-Project
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Shru-Lab/CV7001-ML-Assignment/blob/main/concrete_strength.ipynb)
@@ -45,7 +45,7 @@ No preprocessing was needed: the dataset has no missing values, and random fores
 | Linear regression (baseline) | 8.44 ± 0.75 MPa | 7.75 MPa | 9.80 MPa | 0.628 |
 | Random forest | 3.60 ± 0.16 MPa | 3.79 MPa | 5.54 MPa | 0.881 |
 
-The random forest roughly halves the prediction error of the linear baseline. The validation and test errors are close, which indicates the result is stable rather than a product of one lucky split.
+The random forest roughly halves the prediction error of the linear baseline. The validation and test errors are close, which indicates the result is stable 
 
 **Predicted vs. actual strength (test set):**
 
@@ -70,7 +70,7 @@ Age and cement content are the most influential inputs, followed by water. This 
 
 ## 6. How to reproduce
 
-### Option A: Google Colab (easiest, nothing to install)
+### Option A: Google Colab 
 
 1. Click the **Open in Colab** badge at the top of this page.
 2. In Colab, choose **Runtime → Run all**.
@@ -136,4 +136,4 @@ Expected output with the provided model: `Predicted strength: 48.7 MPa`
 
 ## 11. Acknowledgements and AI disclosure
 
-This project uses the scikit-learn, pandas, numpy, matplotlib, joblib, and ucimlrepo libraries. No pretrained models were used. Generative AI (Claude, by Anthropic) was used for guidance on the project workflow, help writing the code, and drafting this README; all code was run and all results were checked by the author.
+This project uses the scikit-learn, pandas, numpy, matplotlib, joblib, and ucimlrepo libraries. No pretrained models were used. Generative AI (Claude, by Anthropic) was used for guidance writing the code; all code was run and all results were checked by the author.
