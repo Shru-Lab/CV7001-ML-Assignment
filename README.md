@@ -11,7 +11,7 @@ In structural engineering, the compressive strength of concrete is normally conf
 
 This project trains a model that **predicts compressive strength directly from the mix design and the age of the concrete**, so candidate mixes can be screened before casting.
 
-- **Task:** regression
+- **Task:** regression, using a random forest model (with linear regression as a baseline)
 - **Inputs (8):** cement, blast furnace slag, fly ash, water, superplasticizer, coarse aggregate, fine aggregate (all in kg/m³), and age (days)
 - **Output:** compressive strength (MPa)
 
@@ -32,6 +32,7 @@ No labels were created by the author; the strength values are the original labor
 | Data split | 80% training (824 mixes) / 20% test (206 mixes), `train_test_split(..., test_size=0.2, random_state=42)` |
 | Baseline model | Linear regression (scikit-learn `LinearRegression`, default settings) |
 | Main model | Random forest (scikit-learn `RandomForestRegressor`, `n_estimators=300`, `random_state=42`) |
+| Hyperparameters | No tuning was performed: 300 trees, with all other settings at scikit-learn defaults. Tuning (e.g. tree depth or minimum leaf size) is a possible improvement. |
 | Validation | 5-fold cross-validation on the training set only |
 | Test | Final evaluation on the held-out test set, which is never used for training |
 | Metrics | Mean absolute error (MAE), root mean squared error (RMSE), and R² |
@@ -51,7 +52,7 @@ The random forest roughly halves the prediction error of the linear baseline. Th
 
 ![Predicted vs actual strength](pred_vs_actual.png)
 
-Predictions are tight for low and medium strengths. Above about 50 MPa the scatter increases and the model tends to underpredict, likely because high-strength mixes are less common in the data and random forests cannot predict beyond the range of values seen in training.
+Predictions are tight for low and medium strengths (test MAE of 3.0 MPa below 30 MPa and 3.4 MPa between 30 and 50 MPa). Above 50 MPa the MAE rises to 5.9 MPa with a mean signed error of −5.4 MPa, so the model systematically underpredicts high-strength mixes. Only 20% of training mixes exceed 50 MPa, and because a random forest predicts by averaging training examples, these scarce extreme values are pulled towards the middle of the range. The test set stays within the training range (maximum 75.5 vs. 82.6 MPa), so extrapolation is not the cause. This analysis is in Step 5b of the notebook.
 
 **Feature importance:**
 
@@ -70,6 +71,22 @@ Age and cement content are the most influential inputs, followed by water. This 
 
 ## 6. How to reproduce
 
+### Software requirements
+
+The packages below are listed in `requirements.txt`. The versions are those used to produce the reported results.
+
+| Package | Version | Purpose |
+|---|---|---|
+| Python | 3.13.18 | Programming language |
+| scikit-learn | 1.6.1 | Train/test split, models, cross-validation and metrics |
+| pandas | 2.2.3 | Handling the tabular data |
+| numpy | 2.4.6 | Numerical calculations |
+| matplotlib | 3.10.0 | Plotting the figures |
+| joblib | 1.6.0 | Saving and loading the trained model |
+| ucimlrepo | latest | Downloading the dataset from UCI |
+
+Install them with `pip install -r requirements.txt` (not needed in Google Colab, where all but `ucimlrepo` are pre-installed and the notebook installs `ucimlrepo` itself).
+
 ### Option A: Google Colab 
 
 1. Click the **Open in Colab** badge at the top of this page.
@@ -85,7 +102,7 @@ git clone https://github.com/Shru-Lab/CV7001-ML-Assignment.git
 cd CV7001-ML-Assignment
 pip install -r requirements.txt
 pip install notebook
-jupyter notebook CV7001_ML_Assignment.ipynb.
+jupyter notebook CV7001_ML_Assignment.ipynb
 ```
 
 Then run all cells from top to bottom (**Run → Run All Cells**). An internet connection is needed for the data download.
