@@ -1,7 +1,7 @@
 # Predicting Concrete Compressive Strength with Machine Learning
 
 **Author:** Shruthi Thiyagarajan
-**Course:** Machine Learning Mini-Project
+**Course:** CV7001 Machine Learning Mini-Project
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Shru-Lab/CV7001-ML-Assignment/blob/main/CV7001_ML_Assignment.ipynb)
 
